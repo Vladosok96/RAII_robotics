@@ -146,7 +146,7 @@ export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/nu
 roslaunch turtle_tf turtle_tf_demo.launch
 ```
 
-<b>RVIZ</b>: В отдельном окне WSL можно происать следующую команду:
+<b>RVIZ</b>: В отдельном окне WSL можно прописать следующую команду:
 
 ```
 rosrun rviz rviz -d `rospack find turtle_tf`/rviz/turtle_rviz.rviz
@@ -236,7 +236,11 @@ def poseCallback(pose_msg):
 
 ##### Способ 1: без launch файла
 
-Обратите внимание, что каждая команда запускается в новой консоли.
+Обратите внимание, что каждая команда запускается в новой консоли. При этом, находясь в папке <i>catkin_ws</i>, <b>нужно прописать</b> следующую команду:
+
+```
+source devel/setup.bash
+```
 
 Запуск ros:
 
