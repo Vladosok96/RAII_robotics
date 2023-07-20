@@ -142,6 +142,12 @@ export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/nu
 echo export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0 >> ~/.bashrc
 ```
 
+После потребуется запустить <code>~/.bashrc</code>:
+```
+echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+```
+
 ## Запуск приложения с графическим интерфейсом
 Популярный пример <b>turtle_sim</b> для ROS также может работать с x серверами.
 
