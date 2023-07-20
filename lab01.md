@@ -144,7 +144,6 @@ echo export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/d
 
 После потребуется запустить <code>~/.bashrc</code>:
 ```
-echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 ```
 
