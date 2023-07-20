@@ -137,6 +137,11 @@ rosdep update
 export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
 ```
 
+Чтобы данную процедуру не приходилось выполнять при каждом запуске консоли, можно <b>ОДИН РАЗ</b> прописать следующую команду:
+```
+echo export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0 >> ~/.bashrc
+```
+
 ## Запуск приложения с графическим интерфейсом
 Популярный пример <b>turtle_sim</b> для ROS также может работать с x серверами.
 
