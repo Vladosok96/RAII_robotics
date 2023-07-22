@@ -107,7 +107,15 @@ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 
 ```
 rosrun map_server map_saver -f ~/map
-``` 
+```
+
+## Планирование и следование маршрута
+
+Если вы уже создали файл карты, то можете запустить стандартный пример с навигацией:
+```
+export TURTLEBOT3_MODEL=burger
+roslaunch turtlebot3_navigation turtlebot3_navigation.launch map_file:=$HOME/map.yaml
+```
 
 ## Полезные ссылки
 
