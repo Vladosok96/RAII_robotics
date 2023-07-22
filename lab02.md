@@ -20,27 +20,6 @@ sudo apt-get install ros-noetic-gazebo-pkgs
 curl -sSL http://get.gazebosim.org | sh
 ```
 
-## Решение часто возникаевых ошибок
-
-### rosdep: command not found
-
-Решение:
-
-```
-sudo apt-get install python-pip
-sudo pip install -U rosdep
-sudo rosdep init
-rosdep update
-```
-
-### Failed to create the dwa_local_planner/DWAPlannerROS planner
-
-Решение:
-
-```
-sudo apt-get install ros-melodic-dwa-local-planner
-```
-
 ## Создание своего мира в gazebo
 
 Запуск gazebo:
@@ -62,17 +41,65 @@ File -> Save World As.
 ## Установка turtlebot3
 
 ```
+mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws/src/
-git clone https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
-git clone -b kinetic-devel https://github.com/ROBOTIS-GIT/turtlebot3.git
+git clone -b noetic-devel https://github.com/ROBOTIS-GIT/DynamixelSDK.git
+git clone -b noetic-devel https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
+git clone -b noetic-devel https://github.com/ROBOTIS-GIT/turtlebot3.git
 cd ~/catkin_ws && catkin_make
+```
+
+## Установка Gmapping
+
+```
+sudo apt install ros-noetic-slam-gmapping
+```
+
+## Установка DVA local planner
+
+```
+sudo apt-get install ros-kinetic-dwa-local-planner
 ```
 
 ## Построение карты
 
-[Примеры launch файлов]: https://github.com/ulstu/robotics_cad/tree/master/practice/2020/samples/02navigation/launch
+Как обычно, приложения можно запускать двумя способами: просто через консоль командой roscore и rosrun, либо с использованием roslaunch.
 
-На этом этапе необходимо написать launch файл, который будет запускать ваш мир, робота нужной модели, ноду управления роботом с клавиш и slam алгоритм.
+### С использованием roscore и rosrun
+
+Все команды прописываются в <b>отдельных</b> терминалах, в каждом нужно <b>обязательно прописать</b> <code>source devel/setup.bash</code>
+
+Сначала запустить ядро ros:
+```
+roscore
+```
+
+Затем указать модель робота и запустить симуляцию мира с роботом (в данном случае запустится дом из стандартного примера):
+```
+export TURTLEBOT3_MODEL=burger
+roslaunch turtlebot3_gazebo turtlebot3_house.launch
+```
+
+Запустить SLAM-ноду:
+```
+export TURTLEBOT3_MODEL=burger
+roslaunch turtlebot3_slam turtlebot3_slam.launch slam_methods:=gmapping
+```
+<b>SLAM</b> - это одновременная локализация и построение карты.
+
+Запустить ноду для телеуправления:
+```
+export TURTLEBOT3_MODEL=burger
+roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+```
+
+### С использованием launch файла
+
+[Примеры launch файлов](https://github.com/Vladosok96/RAII_robotics/Samples/02navigation/launch)
+
+Необходимо написать launch файл, который будет запускать ваш мир, робота нужной модели, ноду управления роботом с клавиш и slam алгоритм.
+
+### Сохранение карты
 
 Далее необходимо с помощью клавиш пройти роботом всю карту. 
 
@@ -80,19 +107,7 @@ cd ~/catkin_ws && catkin_make
 
 ```
 rosrun map_server map_saver -f ~/map
-```
-
-## Перемещение с помощью карты
-
-[Примеры ко 2 лабораторной работе]: https://github.com/ulstu/robotics_cad/tree/master/practice/2020/samples/02navigation
-
-В примерах находятся наброски скрипта, позволяющего роботу перемещаться к указанным координатам.
-
-Его необходимо доработать.
-
-Далее необоходимо написать launch файл, который запускает симуляцию мира и робота, ваш скрипт и навигацию робота.
-
-Запуск launch-файла описан в методических указаниях к лабораторной работе №1/ 
+``` 
 
 ## Полезные ссылки
 
