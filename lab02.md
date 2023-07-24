@@ -11,7 +11,7 @@
 ## Установка пакетов gazebo
 
 ```
-sudo apt-get install ros-noetic-gazebo-pkgs
+sudo apt-get install ros-noetic-gazebo-*
 ```
 
 Если по какой-то причине у вас не установлено gazebo, то установить его можно комадной:
