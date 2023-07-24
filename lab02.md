@@ -11,7 +11,7 @@
 ## Установка пакетов gazebo
 
 ```
-sudo apt-get install ros-noetic-gazebo-*
+sudo apt-get install ros-noetic-gazebo-ros-pkgs
 ```
 
 Если по какой-то причине у вас не установлено gazebo, то установить его можно комадной:
@@ -39,11 +39,6 @@ gazebo
 File -> Save World As.
 
 ## Установка turtlebot3
-
-```
-apt-get install libprotobuf-dev protobuf-compiler
-```
-
 ```
 mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws/src/
