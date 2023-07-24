@@ -41,6 +41,10 @@ File -> Save World As.
 ## Установка turtlebot3
 
 ```
+apt-get install libprotobuf-dev protobuf-compiler
+```
+
+```
 mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws/src/
 git clone -b noetic-devel https://github.com/ROBOTIS-GIT/DynamixelSDK.git
