@@ -20,23 +20,23 @@ sudo apt-get install ros-noetic-gazebo-ros-pkgs
 curl -sSL http://get.gazebosim.org | sh
 ```
 
-## Создание своего мира в gazebo
-
-Запуск gazebo:
+## Установка Gmapping
 
 ```
-gazebo
+sudo apt install ros-noetic-slam-gmapping
 ```
 
-После запуска у вас откроется пустой мир. Стены и прочие элементы можно создавать с помощью вкладки insert.
+## Установка DVA local planner
 
-Если у вас не отображаются стандартные модели, то необходимо добавить путь до них "/home/ИМЯ/.gazebo/models". 
+```
+sudo apt-get install ros-noetic-dwa-local-planner
+```
 
-Далее необходимо просто выбирать объект из стандартных моделей и устанавливать его. В меню инструментов на верхней панели можно найти инструменты для перемещения, вращения и изменения размеров.
+## Установка Map Saver
 
-После создания мира его необходимо сохранить.
-
-File -> Save World As.
+```
+sudo apt-get install ros-noetic-map-server
+```
 
 ## Установка turtlebot3
 ```
@@ -47,18 +47,6 @@ git clone -b noetic-devel https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
 git clone -b noetic-devel https://github.com/ROBOTIS-GIT/turtlebot3.git
 git clone -b noetic-devel https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
 cd ~/catkin_ws && catkin_make
-```
-
-## Установка Gmapping
-
-```
-sudo apt install ros-noetic-slam-gmapping
-```
-
-## Установка DVA local planner
-
-```
-sudo apt-get install ros-kinetic-dwa-local-planner
 ```
 
 ## Построение карты
