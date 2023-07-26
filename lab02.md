@@ -38,6 +38,11 @@ sudo apt-get install ros-noetic-dwa-local-planner
 sudo apt-get install ros-noetic-map-server
 ```
 
+## Установка Navigation
+```
+sudo apt install ros-noetic-navigation
+```
+
 ## Установка turtlebot3
 ```
 mkdir -p ~/catkin_ws/src
